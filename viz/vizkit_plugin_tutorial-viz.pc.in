@@ -1,0 +1,12 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: vizkit_plugin_tutorial-viz
+Description: vizKit plugin for the vizkit_plugin_tutorial library
+Requires: vizkit_plugin_tutorial @PKGCONFIG_DEPS@
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lvizkit_plugin_tutorial-viz
+Cflags: -I${includedir}
+
