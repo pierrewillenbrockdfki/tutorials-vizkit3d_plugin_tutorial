@@ -7,7 +7,7 @@ Orocos.initialize
 # create an instance of the vizkit main window
 # alternatively vizkit::QVizkitWidget could also be used
 widget = Vizkit.default_loader.create_widget("vizkit::QVizkitMainWindow")
-plugin = widget.createPlugin("vizkit_plugin_tutorial", "SphereVisualization")
+plugin = widget.createPlugin("vizkit3d_plugin_tutorial", "SphereVisualization")
 
 # use a configuration method of the plugin to set the transparency of the sphere
 plugin.setTransparency(1.0)

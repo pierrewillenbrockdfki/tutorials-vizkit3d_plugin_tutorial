@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vizkit_plugin_tutorial/Dummy.hpp>
+#include <vizkit3d_plugin_tutorial/Dummy.hpp>
 
 int main(int argc, char** argv)
 {
