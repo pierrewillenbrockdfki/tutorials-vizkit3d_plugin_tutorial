@@ -1,6 +1,5 @@
 #include "SphereVisualization.hpp"
 #include <osg/Geometry>
-#include <osg/ShapeDrawable>
 
 using namespace vizkit;
 
@@ -13,16 +12,8 @@ struct SphereVisualization::Data {
 
 
 SphereVisualization::SphereVisualization()
-    : p(new Data), transparency(1.0)
+    : transparency(1.0),p(new Data)
 {
-    /* Makes a method updatePosition availabe on ruby side, which will call
-     * the updateData method for the data type base::Vector3d.
-     * This macro is optional. */ 
-    VizPluginRubyAdapter(SphereVisualization, base::Vector3d, Position)
-
-    /* This macro makes the method 'setTransparency' with a float attribute
-     * availabe in ruby, for configuration purposes */
-    VizPluginRubyConfig(SphereVisualization, float, setTransparency)
 }
 
 SphereVisualization::~SphereVisualization()
@@ -34,7 +25,7 @@ osg::ref_ptr<osg::Node> SphereVisualization::createMainNode()
 {
     // create a sphere with radius 0.5
     osg::ref_ptr<osg::Sphere> sp = new osg::Sphere(osg::Vec3d(0,0,0), 0.5);
-    osg::ref_ptr<osg::ShapeDrawable> sd = new osg::ShapeDrawable(sp.get());
+    sd = new osg::ShapeDrawable(sp.get());
     // set a color
     sd->setColor(osg::Vec4(0.0f, 0.59f, 0.59f, transparency));
     osg::ref_ptr<osg::Geode> spGeode = new osg::Geode();
@@ -58,9 +49,17 @@ void SphereVisualization::updateDataIntern(base::Vector3d const& value)
     p->data = value;
 }
 
-void SphereVisualization::setTransparency(float f)
+void SphereVisualization::setTransparency(double f)
 {
     transparency = f;
+    if(sd.valid())
+        sd->setColor(osg::Vec4(0.0f, 0.59f, 0.59f, transparency));
+    emit propertyChanged("Transparency");
+}
+
+double SphereVisualization::getTransparency()
+{
+    return transparency;
 }
 
 //Macro that makes this plugin loadable in ruby, this is optional.

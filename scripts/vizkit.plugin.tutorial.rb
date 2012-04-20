@@ -1,16 +1,15 @@
 require 'vizkit'
-require 'Qt4'
-require 'vizkittypelib'
-include Orocos
 Orocos.initialize
 
-# create an instance of the vizkit main window
-# alternatively vizkit::QVizkitWidget could also be used
-widget = Vizkit.default_loader.create_widget("vizkit::QVizkitMainWindow")
-plugin = widget.createPlugin("vizkit3d_plugin_tutorial", "SphereVisualization")
+#register plugin 
+Vizkit.default_loader.register_3d_plugin 'SphereViz',
+    'vizkit3d_plugin_tutorial', 'SphereVisualization'
+
+#create plugin
+plugin = Vizkit.default_loader.SphereViz
 
 # use a configuration method of the plugin to set the transparency of the sphere
-plugin.setTransparency(1.0)
+plugin.Transparency = 1.0
 
 # create an instance of the base type Vectro3d
 position = Types::Base::Vector3d.new
@@ -31,6 +30,4 @@ end
 
 # start the timer with a timeout of 10 ms
 timer.start(10)
-
-widget.show
 Vizkit.exec 

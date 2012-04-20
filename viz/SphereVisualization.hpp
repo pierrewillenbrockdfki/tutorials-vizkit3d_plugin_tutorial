@@ -2,21 +2,29 @@
 #define SphereVisualization_H
 
 #include <boost/noncopyable.hpp>
-#include <vizkit/VizPlugin.hpp>
+#include <vizkit/Vizkit3DPlugin.hpp>
 #include <osg/Geode>
 #include <osg/PositionAttitudeTransform>
+#include <osg/ShapeDrawable>
 #include <base/eigen.h>
 
 namespace vizkit
 {
     class SphereVisualization
-        : public vizkit::VizPlugin<base::Vector3d>
+        : public vizkit::Vizkit3DPlugin<base::Vector3d>
         , boost::noncopyable
     {
+    Q_OBJECT
+    Q_PROPERTY(double Transparency READ getTransparency WRITE setTransparency)
+
     public:
         SphereVisualization();
         ~SphereVisualization();
-        void setTransparency(float f);
+        void setTransparency(double f);
+        double getTransparency();
+
+        Q_INVOKABLE void updatePosition(base::Vector3d const &value)
+        {Vizkit3DPlugin<base::Vector3d>::updateData(value);}
 
     protected:
         virtual osg::ref_ptr<osg::Node> createMainNode();
@@ -25,6 +33,7 @@ namespace vizkit
         
     private:
         osg::ref_ptr<osg::PositionAttitudeTransform> spherePos;
+        osg::ref_ptr<osg::ShapeDrawable> sd;
         float transparency;
         struct Data;
         Data* p;
