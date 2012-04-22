@@ -1,10 +1,6 @@
 require 'vizkit'
 Orocos.initialize
 
-#register plugin 
-Vizkit.default_loader.register_3d_plugin 'SphereViz',
-    'vizkit3d_plugin_tutorial', 'SphereVisualization'
-
 #create plugin
 plugin = Vizkit.default_loader.SphereViz
 
@@ -30,4 +26,4 @@ end
 
 # start the timer with a timeout of 10 ms
 timer.start(10)
-Vizkit.exec 
+Vizkit.exec
