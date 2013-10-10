@@ -1,7 +1,7 @@
 #include "SphereVisualization.hpp"
 #include <osg/Geometry>
 
-using namespace vizkit;
+using namespace vizkit3d;
 
 struct SphereVisualization::Data {
     // Copy of the value given to updateDataIntern.

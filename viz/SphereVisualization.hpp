@@ -2,16 +2,16 @@
 #define SphereVisualization_H
 
 #include <boost/noncopyable.hpp>
-#include <vizkit/Vizkit3DPlugin.hpp>
+#include <vizkit3d/Vizkit3DPlugin.hpp>
 #include <osg/Geode>
 #include <osg/PositionAttitudeTransform>
 #include <osg/ShapeDrawable>
-#include <base/eigen.h>
+#include <base/Eigen.hpp>
 
-namespace vizkit
+namespace vizkit3d
 {
     class SphereVisualization
-        : public vizkit::Vizkit3DPlugin<base::Vector3d>
+        : public vizkit3d::Vizkit3DPlugin<base::Vector3d>
         , boost::noncopyable
     {
     Q_OBJECT
