@@ -1,3 +1,5 @@
+rock_find_qt5(Core)
+
 rock_vizkit_plugin(vizkit3d_plugin_tutorial-viz
     SphereVisualization.cpp
     DEPS vizkit3d_plugin_tutorial
