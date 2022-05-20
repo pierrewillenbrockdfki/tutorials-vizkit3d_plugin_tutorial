@@ -62,5 +62,3 @@ double SphereVisualization::getTransparency()
     return transparency;
 }
 
-//Macro that makes this plugin loadable in ruby, this is optional.
-VizkitQtPlugin(SphereVisualization)
