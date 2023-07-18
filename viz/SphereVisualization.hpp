@@ -39,6 +39,6 @@ namespace vizkit3d
         Data* p;
     };
 
-    VizkitQtPlugin(SphereVisualization)
+    VizkitQtPluginHeaderDecls(SphereVisualization)
 }
 #endif

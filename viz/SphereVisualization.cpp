@@ -3,6 +3,7 @@
 
 using namespace vizkit3d;
 
+
 struct SphereVisualization::Data {
     // Copy of the value given to updateDataIntern.
     //
@@ -62,3 +63,7 @@ double SphereVisualization::getTransparency()
     return transparency;
 }
 
+namespace vizkit3d
+{
+VizkitQtPluginImpl(SphereVisualization)
+}
